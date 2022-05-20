@@ -1,0 +1,12 @@
+from bs4 import BeautifulSoup
+import requests
+
+def crowler(url):
+    url='https://www.flipkart.com'
+    page=requests.get(url)
+    content=page.text
+    soup=BeautifulSoup(content,'html.parser')
+    tags=soup.find_all('a')
+    
+    links = [i.get('href') for i in tags]
+    return links
